@@ -1,0 +1,33 @@
+<!-- Author: Mr. Squat Team 
+     Date: 9/14/2013
+     Purpose: Display buildings and group information for
+     each building. -->
+<!DOCTYPE html>
+<html>
+  <header>
+  </header>
+
+  <body>
+    <h1>{{ title }}</h1>
+
+    {% if studyGroups %}
+      {% for s in studyGroups %}
+        <br>Group Name: {{ s.name }}
+        <br>Building: {{ s.building }}
+        <br>Room Number: {{ s.roomNumber }}
+        <br>Class Number: {{ s.classNumber }}
+        <br>Time Frame: {{ s.startTime }} to {{ s.endTime }}
+        <br>Studiers: 
+          <p>
+            {% for u in s.users %}
+              Name: {{ u.name }}
+              AndrewID: {{ u.andrewID }}
+              <br>
+            {% endfor %}
+          </p>
+      {% endfor %}
+    {% else %}
+      Sorry, no study groups right now! You can start one [<a href="{{ checkin }}">here</a>]!
+    {% endif %}
+  </body>
+</html>
